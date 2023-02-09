@@ -115,11 +115,11 @@ app.post("/api/user/", (req, res, next) => {
         return;
     }
     const data = {
-        name: req.body.name,
         email: req.body.email,
-        password : md5(req.body.password)
+        password : md5(req.body.password),
+        role: req.body.role
     }
-    const sql ='INSERT INTO UserData (name, email, password) VALUES (?,?,?)'
+    const sql ='INSERT INTO UserData (email, password, role, storeId) VALUES (?,?,?)'
     const params =[data.name, data.email, data.password]
     db.run(sql, params, function (err, result) {
         if (err){

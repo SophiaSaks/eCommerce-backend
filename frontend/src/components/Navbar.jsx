@@ -4,7 +4,7 @@ function NavBar() {
       <nav className={"navbar"}>
         <ul>
           <li>
-            <Link to={'/'} className={"nav_button"}>SHOW ME ALL THE ITEMS</Link>
+            <Link to={'/'} className={"nav_button"}>All items</Link>
           </li>
           <li>
             <Link to={'/login'} className={"nav_button"}>Login</Link>

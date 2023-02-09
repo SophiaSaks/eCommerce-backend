@@ -1,5 +1,5 @@
 
-function NewUserForm({onSubmit}) {
+function NewUserForm({onSubmit, setUser}) {
   return (
       <>
         <h3>Create new user</h3>

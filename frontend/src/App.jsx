@@ -1,5 +1,6 @@
 import './App.css';
 import {useState} from 'react';
+import axios from 'axios';
 
 import {
     BrowserRouter as Router,
@@ -36,6 +37,20 @@ function getCurrentCart() {
 
 function App() {
     const [currentCart, setCurrentCart] = useState(getCurrentCart());
+    const [user, setUser] = useState({})
+
+    const onSubmit = async(event) => {
+        event.preventDefault();
+        
+        try {
+            const response = await axios.post('user/register');
+            console.log(response.data)
+        }
+        catch (error) {
+            console.log(error);
+        }
+    };
+    
     return (
         <div className="App">
             <Router>
@@ -44,7 +59,7 @@ function App() {
                     <NavBar/>
                 </header>
                 <Routes>
-                    <Route exact path='/create-new-user' element={< NewUserForm/>}></Route>
+                    <Route exact path='/create-new-user' element={< NewUserForm onSubmit={onSubmit} setUser={setUser} user={user}/>}></Route>
                     <Route exact path='/login' element={< LoginForm/>}></Route>
                     <Route exact path='/'
                            element={< ProductList products={fakeProducts} addToCart={addToCart}/>}></Route>
